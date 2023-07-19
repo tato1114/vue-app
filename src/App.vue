@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="p-16 pb-6 border-sky-500 border-y-8">
     <AcademicFitReport :athlete="athlete_info" />
   </div>
 </template>
