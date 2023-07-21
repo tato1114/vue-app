@@ -4,20 +4,10 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import AcademicFitReport from "@/components/AcademicFitReport.vue";
 import AthleteData from "@/assets/data.json";
 import './styles.css'
 
-export default {
-  name: "app",
-  components: {
-    AcademicFitReport
-  },
-  data: function () {
-    return {
-      athlete_info: AthleteData.data[0]
-    };
-  }
-};
+const athlete_info = AthleteData.data[0]
 </script>

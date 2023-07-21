@@ -89,18 +89,15 @@
     </div>
 </template>
   
-<script>
+<script setup>
+import { defineProps, reactive } from 'vue';
 import DataRow from './DataRow.vue';
-export default {
-    name: "AcademicFitReport",
-    props: {
-        athlete: {
-            type: Object,
-            required: false
-        }
-    },
-    components: {
-        DataRow
-    },
-};
+
+const props = defineProps({
+    athlete: {
+        type: Object,
+        required: false
+    }
+})
+const { athlete } = reactive(props)
 </script>

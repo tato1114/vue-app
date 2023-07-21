@@ -15,14 +15,14 @@
     </tr>
 </template>
   
-<script>
-export default {
-    name: "DataRow",
-    props: {
-        data: {
-            type: Object,
-            required: true
-        }
+<script setup>
+import { defineProps, reactive } from 'vue';
+
+const props = defineProps({
+    data: {
+        type: Object,
+        required: false
     }
-};
+})
+const { data } = reactive(props)
 </script>
