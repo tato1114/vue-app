@@ -9,10 +9,9 @@ describe('AcademicFitReport.vue', () => {
             athlete: athlete
         }
     })
-    // TODO: test player image is null
     it('Renders academic fit report component', () => {
         const name = wrapper.get('[data-test="name"]')
-        expect(name.text()).toBe(`${athlete.name}`)
+        expect(name.element.value).toBe(`${athlete.name}`)
 
         const sport = wrapper.get('[data-test="sport"]')
         expect(sport.text()).toBe(`Sport: ${athlete.sport}`)
@@ -34,5 +33,13 @@ describe('AcademicFitReport.vue', () => {
     })
     it('Renders DataRows', () => {
         expect(wrapper.findAll('[data-test="data-row"]')).toHaveLength(athlete.report.length)
+    })
+    it('Name change modifies initials and avatar background color', () => {
+        expect(wrapper.vm.initials).toBe('MC')
+        expect(wrapper.vm.colorPick).toBe('color2')
+
+        wrapper.find('[data-test="name"]').setValue('Vanessa Rodas')
+        expect(wrapper.vm.initials).toBe('VR')
+        expect(wrapper.vm.colorPick).toBe('color5')
     })
 })

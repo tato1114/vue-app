@@ -1,8 +1,13 @@
 <template>
     <div class="flex w-full mb-8">
-        <img v-bind:src="athlete.profile_image" alt="Athlete profile picture" class="rounded-full w-24 h-24">
+        <img v-if="athlete.profile_image" v-bind:src="athlete.profile_image" alt="Athlete profile picture"
+            class="rounded-full w-24 h-24">
+        <div v-else class="rounded-full w-24 h-24 flex justify-center items-center text-2xl font-bold text-white"
+            :class=[colorPick] data-test="profile_image">
+            {{ initials }}
+        </div>
         <div class="ml-4">
-            <h2 class="text-sky-500 font-bold" data-test="name">{{ athlete.name }}</h2>
+            <input class="text-sky-500 font-bold" v-model="athleteName" data-test="name" />
             <ul class="columns-2">
                 <li data-test="sport">
                     <label class="font-bold">Sport:</label>
@@ -90,7 +95,7 @@
 </template>
   
 <script setup>
-import { defineProps, reactive } from 'vue';
+import { defineProps, reactive, ref, computed } from 'vue';
 import DataRow from './DataRow.vue';
 
 const props = defineProps({
@@ -100,4 +105,39 @@ const props = defineProps({
     }
 })
 const { athlete } = reactive(props)
+
+const athleteName = ref(athlete.name)
+
+const name = computed(() => athleteName.value.split(' ')[0])
+const lastname = computed(() => athleteName.value.split(' ')[1] ?? '')
+
+const initials = computed(() => name.value.charAt(0).toUpperCase() + lastname.value.charAt(0).toUpperCase());
+
+const colorPick = computed(() => 'color' + (((lastname.value.charCodeAt(0) || 0) % 6) + 1))
+
 </script>
+<style scoped>
+.color1 {
+    background-color: #f1603c;
+}
+
+.color2 {
+    background-color: #6082fa;
+}
+
+.color3 {
+    background-color: #827cb8;
+}
+
+.color4 {
+    background-color: #0097a4;
+}
+
+.color5 {
+    background-color: #ffe066;
+}
+
+.color6 {
+    background-color: #ffa94d;
+}
+</style>
