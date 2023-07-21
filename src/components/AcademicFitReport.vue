@@ -2,29 +2,29 @@
     <div class="flex w-full mb-8">
         <img v-bind:src="athlete.profile_image" alt="Athlete profile picture" class="rounded-full w-24 h-24">
         <div class="ml-4">
-            <h2 class="text-sky-500 font-bold">{{ athlete.name }}</h2>
+            <h2 class="text-sky-500 font-bold" data-test="name">{{ athlete.name }}</h2>
             <ul class="columns-2">
-                <li>
+                <li data-test="sport">
                     <label class="font-bold">Sport:</label>
                     {{ athlete.sport }}
                 </li>
-                <li>
+                <li data-test="grad_year">
                     <label class="font-bold">Class:</label>
                     {{ athlete.grad_year }}
                 </li>
-                <li>
+                <li data-test="club">
                     <label class="font-bold">Club:</label>
                     {{ athlete.club.name }}
                 </li>
-                <li>
+                <li data-test="high_school">
                     <label class="font-bold">High School:</label>
                     {{ athlete.high_school.name }}
                 </li>
-                <li>
+                <li data-test="gpa">
                     <label class="font-bold">GPA:</label>
                     {{ athlete.gpa }}
                 </li>
-                <li>
+                <li data-test="major">
                     <label class="font-bold">Desired Major:</label>
                     {{ athlete.major }}
                 </li>
@@ -75,7 +75,7 @@
             </tr>
         </thead>
         <tbody>
-            <DataRow v-for="(data, index) in athlete.report" :data="data" :key="index" />
+            <DataRow v-for="(data, index) in athlete.report" :data="data" :key="index" data-test="data-row" />
         </tbody>
     </table>
 
