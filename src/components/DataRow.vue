@@ -6,9 +6,7 @@
         <td class="p-2 text-center" data-test="ranking">{{ data.ranking }}</td>
         <td class="p-2 text-center" data-test="gpa-min">{{ data.gpa.min }}</td>
         <td class="p-2 text-center" data-test="gpa-25">{{ data.gpa['25%'] }}</td>
-        <td class="p-2 text-center">
-            <GPAColumn :gpa="data.gpa['50%']" data-test="gpa-50" />
-        </td>
+        <GPAColumn :gpa="data.gpa['50%']" data-test="gpa-50" />
         <td class="p-2 text-center" data-test="gpa-75">{{ data.gpa['75%'] }}</td>
         <td class="p-2 text-center" data-test="gpa-max">{{ data.gpa.max }}</td>
         <td class="p-2 text-center" data-test="sat-reading">{{ data.sat.reading.min }}-{{ data.sat.reading.max }}</td>
