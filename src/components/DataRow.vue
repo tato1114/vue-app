@@ -1,6 +1,6 @@
 <template>
-    <tr class="odd:bg-white even:bg-blue-100">
-        <td class="p-2" data-test="school">{{ data.school }}</td>
+    <tr class="odd:bg-white even:bg-default_light_blue">
+        <td class="p-2 sticky left-0 bg-inherit" data-test="school">{{ data.school }}</td>
         <td class="p-2 text-center" data-test="division">{{ data.division }}</td>
         <td class="p-2" data-test="conference">{{ data.conference }}</td>
         <td class="p-2 text-center" data-test="ranking">{{ data.ranking }}</td>

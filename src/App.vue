@@ -1,5 +1,5 @@
 <template>
-  <div class="p-16 pb-6 border-sky-500 border-y-8">
+  <div class="min-h-screen flex flex-col p-6 md:p-18 lg:p-16 pb-6 border-default_blue border-y-8">
     <AcademicFitReport :athlete="athlete_info" />
   </div>
 </template>
