@@ -4,8 +4,8 @@ import { createStore } from 'vuex'
 const store = createStore({
     state: {
         athleteGPA: 0,
-        profileImage: "",
-        athleteName: ""
+        profileImage: '',
+        athleteName: ''
     },
     mutations: {
         setAthleteGPA(state, gpa) {
