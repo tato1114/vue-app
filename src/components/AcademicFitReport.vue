@@ -5,15 +5,15 @@
             <input class="text-default_blue text-xl font-bold" v-model="athleteName" @keyup="athleteNameChanged"
                 data-test="name" />
             <ul class="flex flex-col flex-wrap max-w-fit max-h-fit sm:max-h-20">
-                <li class="mr-3" data-test="sport">
+                <li class="mr-6 lg:mr-10" data-test="sport">
                     <label class="font-bold">Sport:</label>
                     {{ athlete.sport }}
                 </li>
-                <li class="mr-3" data-test="grad_year">
+                <li class="mr-6 lg:mr-10" data-test="grad_year">
                     <label class="font-bold">Class:</label>
                     {{ athlete.grad_year }}
                 </li>
-                <li class="mr-3" data-test="club">
+                <li class="mr-6 lg:mr-10" data-test="club">
                     <label class="font-bold">Club:</label>
                     {{ athlete.club.name }}
                 </li>
@@ -41,28 +41,28 @@
         <table class="w-full text-xs">
             <thead class="bg-black text-white">
                 <tr>
-                    <th rowspan="2" class="sm:w-1/6 sticky left-0 bg-black text-white">School Name</th>
+                    <th rowspan="2" class="w-1/5 sticky left-0 bg-black text-white">School Name</th>
                     <th rowspan="2" class="w-1/12 px-1.5">Athletic Div</th>
                     <th rowspan="2" class="w-1/5">Conference</th>
-                    <th rowspan="2" class="w-1/6 whitespace-nowrap">
+                    <th rowspan="2" class="w-1/12 whitespace-nowrap">
                         Ranking*
                         <br />
                         <span class="font-extralight">(DI NCAA)</span>
                         <br />
                         <span class="font-extralight">(DII & DIII Hero Sports)</span>
                     </th>
-                    <th colspan="5" class="w-1/6">GPA**</th>
-                    <th rowspan="2" class="whitespace-nowrap px-1.5">
+                    <th colspan="5" class="w-min">GPA**</th>
+                    <th rowspan="2" class="whitespace-nowrap px-1">
                         SAT Reading***
                         <br />
                         25%-75%
                     </th>
-                    <th rowspan="2" class="whitespace-nowrap px-1.5">
+                    <th rowspan="2" class="whitespace-nowrap px-2.5">
                         SAT Math***
                         <br />
                         25%-75%
                     </th>
-                    <th rowspan="2" class="whitespace-nowrap px-1.5">
+                    <th rowspan="2" class="whitespace-nowrap px-1">
                         ACT Composite***
                         <br />
                         25%-75%
