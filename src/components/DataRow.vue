@@ -22,7 +22,7 @@ import GPAColumn from './GPAColumn.vue';
 const props = defineProps({
     data: {
         type: Object,
-        required: false
+        required: true
     }
 })
 const { data } = reactive(props)

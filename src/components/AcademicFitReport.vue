@@ -1,16 +1,9 @@
 <template>
     <div class="flex w-full mb-8 flex-wrap md:flex-nowrap flex-row">
-        <div class="">
-            <img v-if="athlete.profile_image" v-bind:src="athlete.profile_image" alt="Athlete profile picture"
-                class="rounded-full w-20 h-20 sm:w-24 sm:h-24">
-            <div v-else
-                class="rounded-full w-20 h-20 sm:w-24 sm:h-24 flex justify-center items-center text-2xl font-bold text-white"
-                :class=[colorPick] data-test="profile_image">
-                {{ initials }}
-            </div>
-        </div>
+        <ProfileImage />
         <div class="ml-4 mt-4 md:mt-0 order-1 basis-full md:order-none max-w-full md:max-w-fit">
-            <input class="text-default_blue text-xl font-bold" v-model="athleteName" data-test="name" />
+            <input class="text-default_blue text-xl font-bold" v-model="athleteName" @keyup="athleteNameChanged"
+                data-test="name" />
             <ul class="flex flex-col flex-wrap max-w-fit max-h-fit sm:max-h-20">
                 <li class="mr-3" data-test="sport">
                     <label class="font-bold">Sport:</label>
@@ -105,49 +98,27 @@
 </template>
   
 <script setup>
-import { defineProps, reactive, ref, computed } from 'vue';
+import { defineProps, reactive } from 'vue';
+import { useStore } from 'vuex'
 import DataRow from './DataRow.vue';
+import ProfileImage from './ProfileImage.vue';
 
 const props = defineProps({
     athlete: {
         type: Object,
-        required: false
+        required: true
     }
 })
 const { athlete } = reactive(props)
 
-const athleteName = ref(athlete.name)
+const store = useStore()
+store.commit('setAthleteGPA', athlete.gpa)
+store.commit('setProfileImage', athlete.profile_image)
 
-const name = computed(() => athleteName.value.split(' ')[0])
-const lastname = computed(() => athleteName.value.split(' ')[1] ?? '')
+const athleteName = athlete.name
+store.commit('setAthleteName', athleteName)
 
-const initials = computed(() => name.value.charAt(0).toUpperCase() + lastname.value.charAt(0).toUpperCase());
-
-const colorPick = computed(() => 'color' + (((lastname.value.charCodeAt(0) || 0) % 6) + 1))
-
+const athleteNameChanged = (e) => {
+    store.commit('setAthleteName', e.target.value)
+}
 </script>
-<style scoped>
-.color1 {
-    background-color: #f1603c;
-}
-
-.color2 {
-    background-color: #6082fa;
-}
-
-.color3 {
-    background-color: #827cb8;
-}
-
-.color4 {
-    background-color: #0097a4;
-}
-
-.color5 {
-    background-color: #ffe066;
-}
-
-.color6 {
-    background-color: #ffa94d;
-}
-</style>
